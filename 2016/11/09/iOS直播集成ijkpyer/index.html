@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS,直播," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="​         之前总结的是iOS直播中的各种直播协议。 接下来是直播中播放流程非常重要的一部分。集成 ijkplayer。 ijkplayer 是B站开源的基于FFmeng的一个视频直播的框架。支持安卓和iOS。 集成这个框架之后播放就显得很简单了。 其实ijkplayer gitHub主页也有集成教程。 网上也有很多。这里做一下记录。">
+<meta name="keywords" content="iOS,直播">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS直播集成ijkpyer">
+<meta property="og:url" content="http://yoursite.com/2016/11/09/iOS直播集成ijkpyer/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="​         之前总结的是iOS直播中的各种直播协议。 接下来是直播中播放流程非常重要的一部分。集成 ijkplayer。 ijkplayer 是B站开源的基于FFmeng的一个视频直播的框架。支持安卓和iOS。 集成这个框架之后播放就显得很简单了。 其实ijkplayer gitHub主页也有集成教程。 网上也有很多。这里做一下记录。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tKfTcjw1fbfkbv0d9oj30aq0x0goi.jpg">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tKfTcjw1fbfljvmf00j313c06ajti.jpg">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tKfTcjw1fbfx0s93c8j30xu0sial5.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tKfTcjw1fbg1cmys4wj30jm0oo41j.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcjw1fbg1gc2ycaj310k0pgaev.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tKfTcjw1fbg1lmgrttj31d20k2div.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcjw1fbg1pgd4a2j311a0ls77t.jpg">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tKfTcjw1fbg20qhmlmj30xi0o6aei.jpg">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tKfTcjw1fbg23ijcnxj31ik0tu0wz.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcjw1fbg2hrwgmrj30ec0mw764.jpg">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tKfTcjw1fbg2k1rth7j30u807uabd.jpg">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tKfTcjw1fbg35mafb7j31680emgog.jpg">
+<meta property="og:updated_time" content="2017-08-17T07:31:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS直播集成ijkpyer">
+<meta name="twitter:description" content="​         之前总结的是iOS直播中的各种直播协议。 接下来是直播中播放流程非常重要的一部分。集成 ijkplayer。 ijkplayer 是B站开源的基于FFmeng的一个视频直播的框架。支持安卓和iOS。 集成这个框架之后播放就显得很简单了。 其实ijkplayer gitHub主页也有集成教程。 网上也有很多。这里做一下记录。">
+<meta name="twitter:image" content="https://ww3.sinaimg.cn/large/006tKfTcjw1fbfkbv0d9oj30aq0x0goi.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/11/09/iOS直播集成ijkpyer/"/>
+
+
+
+
+
+  <title>iOS直播集成ijkpyer | Hexo</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-104763311-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/09/iOS直播集成ijkpyer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qin.jie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://otbyky75f.bkt.clouddn.com/20170817111523_NB2eMA_ME.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">iOS直播集成ijkpyer</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-09T21:13:03+08:00">
+                2016-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/11/09/iOS直播集成ijkpyer/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/11/09/iOS直播集成ijkpyer/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>​        </p>
+<p>之前总结的是iOS直播中的各种直播协议。 接下来是直播中播放流程非常重要的一部分。集成 <code>ijkplayer</code>。</p>
+<p><a href="https://github.com/Bilibili/ijkplayer" target="_blank" rel="external">ijkplayer</a> 是B站开源的基于FFmeng的一个视频直播的框架。支持安卓和iOS。 集成这个框架之后播放就显得很简单了。</p>
+<p>其实ijkplayer gitHub主页也有集成教程。 网上也有很多。这里做一下记录。</p>
+<a id="more"></a>
+<h3 id="1-下载-ijkplayer"><a href="#1-下载-ijkplayer" class="headerlink" title="1. 下载 ijkplayer"></a>1. 下载 ijkplayer</h3><p>ijkplayer 下载:</p>
+<p><a href="https://github.com/Bilibili/ijkplayer" target="_blank" rel="external">https://github.com/Bilibili/ijkplayer</a></p>
+<p>可以直接下载或者使用git命令 <code>git clone</code> 到本地</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/Bilibili/ijkplayer.git ijkplayer-ios</div></pre></td></tr></table></figure>
+<p>下载解压后得到 :</p>
+<p><img src="https://ww3.sinaimg.cn/large/006tKfTcjw1fbfkbv0d9oj30aq0x0goi.jpg" alt="图片-w200"></p>
+<p>-</p>
+<h3 id="2-编译ijkplayer"><a href="#2-编译ijkplayer" class="headerlink" title="2. 编译ijkplayer"></a>2. 编译ijkplayer</h3><p>打开终端。 cd到下载的ijplayer文件夹</p>
+<p>执行  <code>./init-ios.sh</code> 命令 。</p>
+<p>开始下载ijkplayer。 这个编译过程中会先下载FFmeng。确保网络不会坑。否则就会</p>
+<p><img src="https://ww3.sinaimg.cn/large/006tKfTcjw1fbfljvmf00j313c06ajti.jpg" alt="下载ijkplayer"></p>
+<p>好了。经过一天的下载。下载终于完成了。这🐌网速已经无力吐槽了。</p>
+<p><img src="https://ww3.sinaimg.cn/large/006tKfTcjw1fbfx0s93c8j30xu0sial5.jpg" alt="下载成功提示"></p>
+<p>接下来， cd 到 iOS 端目录 <code>cd ios</code></p>
+<p>接着执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">./compile-ffmpeg.sh clean</div><div class="line">./compile-ffmpeg.sh all</div></pre></td></tr></table></figure>
+<p>编译FFmpeg。 编译过程会有点久。 耐心 。 ☕️</p>
+<p>-</p>
+<h3 id="3-打包IJKMediaFramework-framework框架”-3-打包IJKMediaFramework-framework框架"><a href="#3-打包IJKMediaFramework-framework框架”-3-打包IJKMediaFramework-framework框架" class="headerlink" title="3. 打包IJKMediaFramework.framework框架”)3. 打包IJKMediaFramework.framework框架"></a>3. 打包IJKMediaFramework.framework框架”)3. 打包IJKMediaFramework.framework框架</h3><p>终于到了最后一步了。  开始集成<code>ijkplayer</code>了。</p>
+<p>这里有<strong>两种</strong>方法。  推荐第二种</p>
+<h4 id="1-按照官方demo来。"><a href="#1-按照官方demo来。" class="headerlink" title="1.按照官方demo来。"></a>1.按照官方demo来。</h4><ul>
+<li><p>打开你自己的工程。</p>
+<p> <img src="https://ww1.sinaimg.cn/large/006tKfTcjw1fbg1cmys4wj30jm0oo41j.jpg" alt="w200"></p>
+</li>
+</ul>
+<p>添加刚才编译过的ijkplayer工程</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tKfTcjw1fbg1gc2ycaj310k0pgaev.jpg" alt=""></p>
+<ul>
+<li><p>打开自己的工程设置 , 进入 Build Phases -&gt; Target Dependencies 。 添加IJKMediaFramework</p>
+<p> <img src="https://ww1.sinaimg.cn/large/006tKfTcjw1fbg1lmgrttj31d20k2div.jpg" alt=""></p>
+</li>
+<li><p>进入Build Phases -&gt; Link Binary with Libraries 添加相关依赖框架</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">IJKMediaFramework.framework</div><div class="line">AudioToolbox.framework</div><div class="line">AVFoundation.framework</div><div class="line">CoreGraphics.framework</div><div class="line">CoreMedia.framework</div><div class="line">CoreVideo.framework</div><div class="line">libbz2.tbd</div><div class="line">libz.tbd</div><div class="line">MediaPlayer.framework</div><div class="line">MobileCoreServices.framework</div><div class="line">OpenGLES.framework</div><div class="line">QuartzCore.framework</div><div class="line">UIKit.framework</div><div class="line">VideoToolbox.framework</div></pre></td></tr></table></figure>
+<p><img src="https://ww4.sinaimg.cn/large/006tKfTcjw1fbg1pgd4a2j311a0ls77t.jpg" alt=""></p>
+</li>
+<li><p>终了。 编译一下</p>
+</li>
+</ul>
+<h4 id="2-将ijkplayer打包成framework导入工程中”-2-将ijkplayer打包成framework导入工程中"><a href="#2-将ijkplayer打包成framework导入工程中”-2-将ijkplayer打包成framework导入工程中" class="headerlink" title="2.将ijkplayer打包成framework导入工程中”)2.将ijkplayer打包成framework导入工程中"></a>2.将ijkplayer打包成framework导入工程中”)2.将ijkplayer打包成framework导入工程中</h4><ul>
+<li><p>打开 <code>ijkplayer.xcodeproj</code></p>
+<p> <img src="https://ww3.sinaimg.cn/large/006tKfTcjw1fbg20qhmlmj30xi0o6aei.jpg" alt="打开 ijkplayer工程"></p>
+</li>
+<li><p>打开之后选中工程当前的Scheme。然后编辑当前的Scheme.</p>
+<p> <img src="https://ww3.sinaimg.cn/large/006tKfTcjw1fbg23ijcnxj31ik0tu0wz.jpg" alt="编辑Scheme"></p>
+</li>
+<li><p>设置好后分别选择模拟器和真机编译一次。</p>
+</li>
+<li><p>编译完成后进入Finder</p>
+<p> <img src="https://ww4.sinaimg.cn/large/006tKfTcjw1fbg2hrwgmrj30ec0mw764.jpg" alt="w200"></p>
+</li>
+<li><p>可以看到真机环境和模拟器环境的framework<br><img src="https://ww2.sinaimg.cn/large/006tKfTcjw1fbg2k1rth7j30u807uabd.jpg" alt=""></p>
+</li>
+<li><p>接下来要做的就是合并真机和模拟器的framework</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lipo -create &quot;真机版本路径&quot; &quot;模拟器版本路径&quot; -output &quot;合并后的文件路径&quot;</div></pre></td></tr></table></figure>
+<p> ​</p>
+<p><strong>这里注意：</strong></p>
+</li>
+</ul>
+<p>​    路径不是.framework文件。 而是里面的IJKMediaFramework文件</p>
+<p>​    直接将该文件拖进终端就可以显示路径</p>
+<pre><code>![](https://ww4.sinaimg.cn/large/006tKfTcjw1fbg2y27ysxj314c0ae761.jpg)
+</code></pre><ul>
+<li><p>进入真机环境的<code>IJKMediaFramework.framework</code>. 删掉IJKMediaFramework</p>
+<p> <img src="https://ww2.sinaimg.cn/large/006tKfTcjw1fbg35mafb7j31680emgog.jpg" alt=""></p>
+</li>
+<li><p>把之前合并的Framework拖进<code>IJKMediaFramework.framework</code>。这就是我们需要的框架了。</p>
+</li>
+<li><p>导入<code>IJKMediaFramework.framework</code>及其依赖框架。</p>
+</li>
+<li><p>在ViewController中导入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#import &quot;IJKMediaFramework/IJKMediaFramework.h&quot;</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ul>
+<p>编译。没有错误则集成成功</p>
+<h4 id="终了。"><a href="#终了。" class="headerlink" title="终了。"></a>终了。</h4><p><em>部分摘自:</em><br><a href="http://www.jianshu.com/p/1f06b27b3ac0" target="_blank" rel="external">简📖</a><br><a href="https://github.com/Bilibili/ijkplayer" target="_blank" rel="external">ijkplayer @gitHub</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+            <a href="/tags/直播/" rel="tag"># 直播</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/17/直播各种协议概述/" rel="next" title="直播各种协议概述">
+                <i class="fa fa-chevron-left"></i> 直播各种协议概述
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/19/Runtime 部分总结 /" rel="prev" title="Runtime 部分总结">
+                Runtime 部分总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://otbyky75f.bkt.clouddn.com/20170817111523_NB2eMA_ME.jpeg"
+               alt="qin.jie" />
+          <p class="site-author-name" itemprop="name">qin.jie</p>
+           
+              <p class="site-description motion-element" itemprop="description">这是最好的时代 这是最坏的时代</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/qin-jie" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="qin.jie@live.com" target="_blank" title="E-Mail">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                    
+                      E-Mail
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/qq79061646" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                    
+                      Twitter
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/qin.jie.live" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      Facebook
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3944166855/profile?topnav=1&wvr=6" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-下载-ijkplayer"><span class="nav-number">1.</span> <span class="nav-text">1. 下载 ijkplayer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-编译ijkplayer"><span class="nav-number">2.</span> <span class="nav-text">2. 编译ijkplayer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-打包IJKMediaFramework-framework框架”-3-打包IJKMediaFramework-framework框架"><span class="nav-number">3.</span> <span class="nav-text">3. 打包IJKMediaFramework.framework框架”)3. 打包IJKMediaFramework.framework框架</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-按照官方demo来。"><span class="nav-number">3.1.</span> <span class="nav-text">1.按照官方demo来。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-将ijkplayer打包成framework导入工程中”-2-将ijkplayer打包成framework导入工程中"><span class="nav-number">3.2.</span> <span class="nav-text">2.将ijkplayer打包成framework导入工程中”)2.将ijkplayer打包成framework导入工程中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#终了。"><span class="nav-number">3.3.</span> <span class="nav-text">终了。</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qin.jie</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    主题 &mdash;
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Mist
+    </a>
+  </div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://qinj.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2016/11/09/iOS直播集成ijkpyer/';
+          this.page.identifier = '2016/11/09/iOS直播集成ijkpyer/';
+          this.page.title = 'iOS直播集成ijkpyer';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://qinj.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine@1.1.4/dist/Valine.min.js"></script>
+  <script type="text/javascript">
+    new Valine({
+        av: AV,
+        el: '#vcomments' ,
+        verify: false,
+        notify: false,
+        app_id: 'BWN3BOIaBNtVrdVtFfGGRAGv-gzGzoHsz',
+        app_key: 'WUqPLIepFjaClT6a0PNyB0Hg',
+        placeholder: 'Comment input placeholder'
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
