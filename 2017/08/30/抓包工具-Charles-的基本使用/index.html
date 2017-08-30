@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="iOS,直播," />
+  <meta name="keywords" content="iOS,工具," />
 
 
 
@@ -94,31 +94,31 @@
 
 
 
-<meta name="description" content="​         之前总结的是iOS直播中的各种直播协议。 接下来是直播中播放流程非常重要的一部分。集成 ijkplayer。 ijkplayer 是B站开源的基于FFmeng的一个视频直播的框架。支持安卓和iOS。 集成这个框架之后播放就显得很简单了。 其实ijkplayer gitHub主页也有集成教程。 网上也有很多。这里做一下记录。">
-<meta name="keywords" content="iOS,直播">
+<meta name="description" content="最近工作需要, 得从网上抓取数据和 Cookie 并模拟请求啥的. 以前用的抓包工具是朋友分享的 jar 包. 后来没怎么用过也没有备份保存. 于是就想到了有名的 Charles. Charles 是 macOS 上数一数二的抓包分析工具. 这里做一下最近使用 Charles 的心得.">
+<meta name="keywords" content="iOS,工具">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS直播集成ijkpyer">
-<meta property="og:url" content="https://github.com/qin-jie/2016/11/09/iOS直播集成ijkpyer/index.html">
+<meta property="og:title" content="抓包工具 Charles 的基本使用">
+<meta property="og:url" content="https://github.com/qin-jie/2017/08/30/抓包工具-Charles-的基本使用/index.html">
 <meta property="og:site_name" content="qin.jie">
-<meta property="og:description" content="​         之前总结的是iOS直播中的各种直播协议。 接下来是直播中播放流程非常重要的一部分。集成 ijkplayer。 ijkplayer 是B站开源的基于FFmeng的一个视频直播的框架。支持安卓和iOS。 集成这个框架之后播放就显得很简单了。 其实ijkplayer gitHub主页也有集成教程。 网上也有很多。这里做一下记录。">
+<meta property="og:description" content="最近工作需要, 得从网上抓取数据和 Cookie 并模拟请求啥的. 以前用的抓包工具是朋友分享的 jar 包. 后来没怎么用过也没有备份保存. 于是就想到了有名的 Charles. Charles 是 macOS 上数一数二的抓包分析工具. 这里做一下最近使用 Charles 的心得.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tKfTcjw1fbfkbv0d9oj30aq0x0goi.jpg">
-<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tKfTcjw1fbfljvmf00j313c06ajti.jpg">
-<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tKfTcjw1fbfx0s93c8j30xu0sial5.jpg">
-<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tKfTcjw1fbg1cmys4wj30jm0oo41j.jpg">
-<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcjw1fbg1gc2ycaj310k0pgaev.jpg">
-<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tKfTcjw1fbg1lmgrttj31d20k2div.jpg">
-<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcjw1fbg1pgd4a2j311a0ls77t.jpg">
-<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tKfTcjw1fbg20qhmlmj30xi0o6aei.jpg">
-<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tKfTcjw1fbg23ijcnxj31ik0tu0wz.jpg">
-<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcjw1fbg2hrwgmrj30ec0mw764.jpg">
-<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tKfTcjw1fbg2k1rth7j30u807uabd.jpg">
-<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tKfTcjw1fbg35mafb7j31680emgog.jpg">
-<meta property="og:updated_time" content="2017-08-17T07:31:26.000Z">
+<meta property="og:image" content="http://otbyky75f.bkt.clouddn.com/20170830103349_DyKcix_Screenshot.jpeg">
+<meta property="og:image" content="http://otbyky75f.bkt.clouddn.com/20170830163345_i99ZHJ_Charles_2017-08-30 10-56-00.jpeg">
+<meta property="og:image" content="http://otbyky75f.bkt.clouddn.com/20170830110523_shsiyK_Screenshot.jpeg">
+<meta property="og:image" content="http://otbyky75f.bkt.clouddn.com/20170830110806_RYeg4T_Screenshot.jpeg">
+<meta property="og:image" content="http://otbyky75f.bkt.clouddn.com/20170830111109_NSulbM_Screenshot.jpeg">
+<meta property="og:image" content="http://otbyky75f.bkt.clouddn.com/20170830115228_Pwm6A3_Screenshot.jpeg">
+<meta property="og:image" content="http://otbyky75f.bkt.clouddn.com/20170830142323_dZ8erz_Screenshot.jpeg">
+<meta property="og:image" content="http://otbyky75f.bkt.clouddn.com/20170830162100_YuHc9Z_IMG_0168.jpeg">
+<meta property="og:image" content="http://otbyky75f.bkt.clouddn.com/20170830161356_SXVgLb_Screenshot.jpeg">
+<meta property="og:image" content="http://otbyky75f.bkt.clouddn.com/20170830165438_NJvJEZ_Screenshot.jpeg">
+<meta property="og:image" content="http://otbyky75f.bkt.clouddn.com/20170830171307_AbanXP_Screenshot.jpeg">
+<meta property="og:image" content="http://otbyky75f.bkt.clouddn.com/20170830172214_ZPThSL_Screenshot.jpeg">
+<meta property="og:updated_time" content="2017-08-30T09:42:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS直播集成ijkpyer">
-<meta name="twitter:description" content="​         之前总结的是iOS直播中的各种直播协议。 接下来是直播中播放流程非常重要的一部分。集成 ijkplayer。 ijkplayer 是B站开源的基于FFmeng的一个视频直播的框架。支持安卓和iOS。 集成这个框架之后播放就显得很简单了。 其实ijkplayer gitHub主页也有集成教程。 网上也有很多。这里做一下记录。">
-<meta name="twitter:image" content="https://ww3.sinaimg.cn/large/006tKfTcjw1fbfkbv0d9oj30aq0x0goi.jpg">
+<meta name="twitter:title" content="抓包工具 Charles 的基本使用">
+<meta name="twitter:description" content="最近工作需要, 得从网上抓取数据和 Cookie 并模拟请求啥的. 以前用的抓包工具是朋友分享的 jar 包. 后来没怎么用过也没有备份保存. 于是就想到了有名的 Charles. Charles 是 macOS 上数一数二的抓包分析工具. 这里做一下最近使用 Charles 的心得.">
+<meta name="twitter:image" content="http://otbyky75f.bkt.clouddn.com/20170830103349_DyKcix_Screenshot.jpeg">
 
 
 
@@ -147,13 +147,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/qin-jie/2016/11/09/iOS直播集成ijkpyer/"/>
+  <link rel="canonical" href="https://github.com/qin-jie/2017/08/30/抓包工具-Charles-的基本使用/"/>
 
 
 
 
 
-  <title>iOS直播集成ijkpyer | qin.jie</title>
+  <title>抓包工具 Charles 的基本使用 | qin.jie</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/qin-jie/2016/11/09/iOS直播集成ijkpyer/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/qin-jie/2017/08/30/抓包工具-Charles-的基本使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qin.jie">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">iOS直播集成ijkpyer</h1>
+          <h1 class="post-title" itemprop="name headline">抓包工具 Charles 的基本使用</h1>
         
 
         <div class="post-meta">
@@ -318,8 +318,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-09T21:13:03+08:00">
-                2016-11-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-30T10:10:49+08:00">
+                2017-08-30
               </time>
             
 
@@ -337,9 +337,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/11/09/iOS直播集成ijkpyer/#comments" itemprop="discussionUrl">
+                <a href="/2017/08/30/抓包工具-Charles-的基本使用/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/11/09/iOS直播集成ijkpyer/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/08/30/抓包工具-Charles-的基本使用/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -372,87 +372,84 @@
       
 
       
-        <p>​        </p>
-<p>之前总结的是iOS直播中的各种直播协议。 接下来是直播中播放流程非常重要的一部分。集成 <code>ijkplayer</code>。</p>
-<p><a href="https://github.com/Bilibili/ijkplayer">ijkplayer</a> 是B站开源的基于FFmeng的一个视频直播的框架。支持安卓和iOS。 集成这个框架之后播放就显得很简单了。</p>
-<p>其实ijkplayer gitHub主页也有集成教程。 网上也有很多。这里做一下记录。</p>
+        <p>最近工作需要, 得从网上抓取数据和 Cookie 并模拟请求啥的. 以前用的抓包工具是朋友分享的 jar 包. 后来没怎么用过也没有备份保存. 于是就想到了有名的 Charles. Charles 是 macOS 上数一数二的抓包分析工具. 这里做一下最近使用 Charles 的心得.</p>
 <a id="more"></a>
-<h3 id="1-下载-ijkplayer"><a href="#1-下载-ijkplayer" class="headerlink" title="1. 下载 ijkplayer"></a>1. 下载 ijkplayer</h3><p>ijkplayer 下载:</p>
-<p><a href="https://github.com/Bilibili/ijkplayer">https://github.com/Bilibili/ijkplayer</a></p>
-<p>可以直接下载或者使用git命令 <code>git clone</code> 到本地</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/Bilibili/ijkplayer.git ijkplayer-ios</div></pre></td></tr></table></figure>
-<p>下载解压后得到 :</p>
-<p><img src="https://ww3.sinaimg.cn/large/006tKfTcjw1fbfkbv0d9oj30aq0x0goi.jpg" alt="图片-w200"></p>
-<p>-</p>
-<h3 id="2-编译ijkplayer"><a href="#2-编译ijkplayer" class="headerlink" title="2. 编译ijkplayer"></a>2. 编译ijkplayer</h3><p>打开终端。 cd到下载的ijplayer文件夹</p>
-<p>执行  <code>./init-ios.sh</code> 命令 。</p>
-<p>开始下载ijkplayer。 这个编译过程中会先下载FFmeng。确保网络不会坑。否则就会</p>
-<p><img src="https://ww3.sinaimg.cn/large/006tKfTcjw1fbfljvmf00j313c06ajti.jpg" alt="下载ijkplayer"></p>
-<p>好了。经过一天的下载。下载终于完成了。这🐌网速已经无力吐槽了。</p>
-<p><img src="https://ww3.sinaimg.cn/large/006tKfTcjw1fbfx0s93c8j30xu0sial5.jpg" alt="下载成功提示"></p>
-<p>接下来， cd 到 iOS 端目录 <code>cd ios</code></p>
-<p>接着执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">./compile-ffmpeg.sh clean</div><div class="line">./compile-ffmpeg.sh all</div></pre></td></tr></table></figure>
-<p>编译FFmpeg。 编译过程会有点久。 耐心 。 ☕️</p>
-<p>-</p>
-<h3 id="3-打包IJKMediaFramework-framework框架”-3-打包IJKMediaFramework-framework框架"><a href="#3-打包IJKMediaFramework-framework框架”-3-打包IJKMediaFramework-framework框架" class="headerlink" title="3. 打包IJKMediaFramework.framework框架”)3. 打包IJKMediaFramework.framework框架"></a>3. 打包IJKMediaFramework.framework框架”)3. 打包IJKMediaFramework.framework框架</h3><p>终于到了最后一步了。  开始集成<code>ijkplayer</code>了。</p>
-<p>这里有<strong>两种</strong>方法。  推荐第二种</p>
-<h4 id="1-按照官方demo来。"><a href="#1-按照官方demo来。" class="headerlink" title="1.按照官方demo来。"></a>1.按照官方demo来。</h4><ul>
-<li><p>打开你自己的工程。</p>
-<p> <img src="https://ww1.sinaimg.cn/large/006tKfTcjw1fbg1cmys4wj30jm0oo41j.jpg" alt="w200"></p>
-</li>
-</ul>
-<p>添加刚才编译过的ijkplayer工程</p>
-<p><img src="https://ww4.sinaimg.cn/large/006tKfTcjw1fbg1gc2ycaj310k0pgaev.jpg" alt=""></p>
+<h2 id="下载安装-Charles"><a href="#下载安装-Charles" class="headerlink" title="下载安装 Charles"></a>下载安装 Charles</h2><p>这一点就不多做介绍了. 土豪用户可以直接使用正版. 舍不得花钱的也可以直接网上找破解的. </p>
+<h2 id="开始使用-Charles"><a href="#开始使用-Charles" class="headerlink" title="开始使用 Charles"></a>开始使用 Charles</h2><h3 id="将-Charles-设置为系统代理"><a href="#将-Charles-设置为系统代理" class="headerlink" title="将 Charles 设置为系统代理"></a>将 Charles 设置为系统代理</h3><p>Charles 是通过将自己做为系统的网络代理服务器来完成抓包截取的.  所以, 第一次使用的时候Charles 需要请求权限来设置代理. 如果你忽略了该请求. Charles 是不能正常工作的. 你也可以在菜单栏重新设置.</p>
+<div align="center"><br><br><img src="http://otbyky75f.bkt.clouddn.com/20170830103349_DyKcix_Screenshot.jpeg" alt=""><br><br></div>
+
+<p><em>注意</em>: 使用 Chrome 和  FireFox 来抓包时. Chrome 需要设置成使用系统的代理服务器. 默认情况下, Chrome 是使用的系统代理. 如果你在 Chrome 中安装了翻墙插件, 直接禁用就 👌了. 而 FireFox 需要在 FireFox 插件商店安装代理配置插件然后选择图中系统代理下面的 FireFox Proxy 才能使用. 但是这个<a href="https://addons.mozilla.org/zh-CN/firefox/addon/charles-proxy/" target="_blank" rel="external">插件</a>对于新版 FireFox 并不兼容.  🙄 .</p>
+<p>由于抓包之后有时候还需要分析页面 Cookie 和层级结构. Safari 下开发者模式的 Cookie 是以表单显示的.虽然很明朗. 但是不方便复制使用. 所以还是 Chrome 管用.  </p>
+<h3 id="主界面"><a href="#主界面" class="headerlink" title="主界面"></a>主界面</h3><div align="center"><br><br><img src="http://otbyky75f.bkt.clouddn.com/20170830163345_i99ZHJ_Charles_2017-08-30 10-56-00.jpeg" style="zoom:80%"><br><br></div>
+
+<p>Charles 有两种方式来排列数据包视图</p>
 <ul>
-<li><p>打开自己的工程设置 , 进入 Build Phases -&gt; Target Dependencies 。 添加IJKMediaFramework</p>
-<p> <img src="https://ww1.sinaimg.cn/large/006tKfTcjw1fbg1lmgrttj31d20k2div.jpg" alt=""></p>
-</li>
-<li><p>进入Build Phases -&gt; Link Binary with Libraries 添加相关依赖框架</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">IJKMediaFramework.framework</div><div class="line">AudioToolbox.framework</div><div class="line">AVFoundation.framework</div><div class="line">CoreGraphics.framework</div><div class="line">CoreMedia.framework</div><div class="line">CoreVideo.framework</div><div class="line">libbz2.tbd</div><div class="line">libz.tbd</div><div class="line">MediaPlayer.framework</div><div class="line">MobileCoreServices.framework</div><div class="line">OpenGLES.framework</div><div class="line">QuartzCore.framework</div><div class="line">UIKit.framework</div><div class="line">VideoToolbox.framework</div></pre></td></tr></table></figure>
-<p><img src="https://ww4.sinaimg.cn/large/006tKfTcjw1fbg1pgd4a2j311a0ls77t.jpg" alt=""></p>
-</li>
-<li><p>终了。 编译一下</p>
+<li>Struct 按域名分类</li>
+<li>Sequence 按请求时间排序</li>
+</ul>
+<p>一般情况下我基本都使用 Struct 视图. </p>
+<h3 id="过滤网络请求"><a href="#过滤网络请求" class="headerlink" title="过滤网络请求"></a>过滤网络请求</h3><p>由于 Charles 是将系统代理设置为自己. 所以所有的网络请求都经过了 Charles, 不管是 QQ, WeChat 还是 iCloud 等. 这样一来. 视图栏肯定是一大串域名和数据. 让人看花眼.  需要我们过滤网络请求</p>
+<ul>
+<li><p>我一般是找到自己需要抓取的域名. 然后右键 Focus. </p>
+<div align="center"><br><br><img src="http://otbyky75f.bkt.clouddn.com/20170830110523_shsiyK_Screenshot.jpeg" alt=""><br><br></div>
+
+<p>Charles 会将这个域名的数据单独列出来. 其他的都放到 Others 里面</p>
+<div align="center"><br><br><img src="http://otbyky75f.bkt.clouddn.com/20170830110806_RYeg4T_Screenshot.jpeg" alt=""><br><br></div>
+
+
 </li>
 </ul>
-<h4 id="2-将ijkplayer打包成framework导入工程中”-2-将ijkplayer打包成framework导入工程中"><a href="#2-将ijkplayer打包成framework导入工程中”-2-将ijkplayer打包成framework导入工程中" class="headerlink" title="2.将ijkplayer打包成framework导入工程中”)2.将ijkplayer打包成framework导入工程中"></a>2.将ijkplayer打包成framework导入工程中”)2.将ijkplayer打包成framework导入工程中</h4><ul>
-<li><p>打开 <code>ijkplayer.xcodeproj</code></p>
-<p> <img src="https://ww3.sinaimg.cn/large/006tKfTcjw1fbg20qhmlmj30xi0o6aei.jpg" alt="打开 ijkplayer工程"></p>
-</li>
-<li><p>打开之后选中工程当前的Scheme。然后编辑当前的Scheme.</p>
-<p> <img src="https://ww3.sinaimg.cn/large/006tKfTcjw1fbg23ijcnxj31ik0tu0wz.jpg" alt="编辑Scheme"></p>
-</li>
-<li><p>设置好后分别选择模拟器和真机编译一次。</p>
-</li>
-<li><p>编译完成后进入Finder</p>
-<p> <img src="https://ww4.sinaimg.cn/large/006tKfTcjw1fbg2hrwgmrj30ec0mw764.jpg" alt="w200"></p>
-</li>
-<li><p>可以看到真机环境和模拟器环境的framework<br><img src="https://ww2.sinaimg.cn/large/006tKfTcjw1fbg2k1rth7j30u807uabd.jpg" alt=""></p>
-</li>
-<li><p>接下来要做的就是合并真机和模拟器的framework</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lipo -create &quot;真机版本路径&quot; &quot;模拟器版本路径&quot; -output &quot;合并后的文件路径&quot;</div></pre></td></tr></table></figure>
-<p> ​</p>
-<p><strong>这里注意：</strong></p>
+<ul>
+<li><p>在菜单栏选择 Proxy 👉Recording Settings👉Include. 添加项目. 填入监控的协议. 地址 端口号. 这样就可以只截取该网站的数据包了. </p>
+<div align="center"><br><br><img src="http://otbyky75f.bkt.clouddn.com/20170830111109_NSulbM_Screenshot.jpeg" style="zoom:80%"><br><br></div>
+
+<p><em>Ps</em>: <code>Exclude</code>栏可以填入不需要截取的域名信息.</p>
 </li>
 </ul>
-<p>​    路径不是.framework文件。 而是里面的IJKMediaFramework文件</p>
-<p>​    直接将该文件拖进终端就可以显示路径</p>
-<pre><code>![](https://ww4.sinaimg.cn/large/006tKfTcjw1fbg2y27ysxj314c0ae761.jpg)
-</code></pre><ul>
-<li><p>进入真机环境的<code>IJKMediaFramework.framework</code>. 删掉IJKMediaFramework</p>
-<p> <img src="https://ww2.sinaimg.cn/large/006tKfTcjw1fbg35mafb7j31680emgog.jpg" alt=""></p>
-</li>
-<li><p>把之前合并的Framework拖进<code>IJKMediaFramework.framework</code>。这就是我们需要的框架了。</p>
-</li>
-<li><p>导入<code>IJKMediaFramework.framework</code>及其依赖框架。</p>
-</li>
-<li><p>在ViewController中导入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#import &quot;IJKMediaFramework/IJKMediaFramework.h&quot;</div></pre></td></tr></table></figure>
-<p>​</p>
-</li>
-</ul>
-<p>编译。没有错误则集成成功</p>
-<h4 id="终了。"><a href="#终了。" class="headerlink" title="终了。"></a>终了。</h4><p><em>部分摘自:</em><br><a href="http://www.jianshu.com/p/1f06b27b3ac0" target="_blank" rel="external">简📖</a><br><a href="https://github.com/Bilibili/ijkplayer">ijkplayer @gitHub</a></p>
+<h3 id="截取-HTTPS-协议的网站数据"><a href="#截取-HTTPS-协议的网站数据" class="headerlink" title="截取 HTTPS 协议的网站数据"></a>截取 HTTPS 协议的网站数据</h3><p>如果需要截取 HTTPS 协议的网站数据包. 需要先安装证书后才能用</p>
+<p>点击 Charles 菜单栏 👉 Help 👉 SSL Proxy 👉 Install Charles Root Certificate 👉 输入账号密码 👉 👌</p>
+<div align="center"><br><br><img src="http://otbyky75f.bkt.clouddn.com/20170830115228_Pwm6A3_Screenshot.jpeg" alt=""><br><br></div>
+
+<p>可以在 <code>KeyChains</code> 看到添加好的证书. 然后在需要截取的网站列表请求上右击选择 👉 SSL Proxying 👉 👌 .</p>
+<p>也可以开启全局的 HTTPS 请求抓取. 菜单栏 👉SSL Proxying Settings 👉 ☑️ Enable SSL Proxying 👉 添加域名</p>
+<div align="center"><br><img src="http://otbyky75f.bkt.clouddn.com/20170830142323_dZ8erz_Screenshot.jpeg" alt=""><br></div>
+
+
+
+<h3 id="在-iPhone-上抓包"><a href="#在-iPhone-上抓包" class="headerlink" title="在 iPhone 上抓包"></a>在 iPhone 上抓包</h3><p>首先获取电脑得 IP 地址. <code>Options</code>+ 无线网图标. 或者 Charles 菜单栏 👉 Help 👉 Local IP Address</p>
+<p>在 📱 的设置 👉 无线局域网 👉 你当前的 WiFi 名称 👉 详情 👉 选择手动 HTTP 代理. </p>
+<p>输入电脑得 IP 地址和端口号. 如下图</p>
+<div align="center"><br><br><img src="http://otbyky75f.bkt.clouddn.com/20170830162100_YuHc9Z_IMG_0168.jpeg" style="zoom:50%"><br><br></div>
+
+
+
+<p>设置好之后. 打开📱上任意一个需要联网的程序. 就可以看到 Charles 弹出的请求菜单. 点击 Allow 就可以开始抓包了</p>
+<div align="center"><br><br><img src="http://otbyky75f.bkt.clouddn.com/20170830161356_SXVgLb_Screenshot.jpeg" style="zoom:80%"><br><br></div>
+
+
+
+<h3 id="在-iPhone-上抓取-HTTPS-协议数据包"><a href="#在-iPhone-上抓取-HTTPS-协议数据包" class="headerlink" title="在 iPhone 上抓取 HTTPS 协议数据包"></a>在 iPhone 上抓取 HTTPS 协议数据包</h3><p>菜单栏 👉 Help 👉 SSL Proxying 👉 Install Charles Root Certificate on a Mobile Device or Remote Browser . </p>
+<div align="center"><br><br><img src="http://otbyky75f.bkt.clouddn.com/20170830165438_NJvJEZ_Screenshot.jpeg" alt=""><br><br></div>
+
+
+
+<p>在完成上一步的情况下. 📱 Safari 访问 <code>chls.pro/ssl</code> 就能打开证书安装的界面了. 安装完成之后同样会出现请求权限. 点击 Allow 就👌了 .</p>
+<h3 id="手动发送新请求"><a href="#手动发送新请求" class="headerlink" title="手动发送新请求"></a>手动发送新请求</h3><p>有时候我们需要手动发送一个请求. 点击菜单栏 👉 Tools 👉 Compose New 即可(或者直接按快捷键<code>command</code> + <code>Shift</code> + <code>M</code>).    Compose 表示在当前选中的请求中更改.</p>
+<div align="center"><br><br><img src="http://otbyky75f.bkt.clouddn.com/20170830171307_AbanXP_Screenshot.jpeg" style="zoom:100%"><br><br></div>
+
+
+
+<p>输入请求的 URL 地址 . 请求方法. HTTP 协议版本.  在接下来得界面中可以进行更多的操作. 设置请求头. 设置 Cookie 等等</p>
+<div align="center"><br><br><img src="http://otbyky75f.bkt.clouddn.com/20170830172214_ZPThSL_Screenshot.jpeg" style="zoom:80%"><br><br></div>
+
+
+
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>Charles 的原理是把自己设置成系统的代理服务器. 但是程序猿基本都会有翻墙的软件. 而这些软件基本上也都是将自己设置成系统代理来实现翻墙的. 所以. 在使用翻墙软件的时候会跟 Charles 冲突. 最好先关闭.</p>
+<p>在网上找到部分解决办法. 需要修改软件为全局模式. 然后设置 Charles 的 External Proxy. 可参考<a href="https://www.wangjiawen.com/skill/shadowsocks-work-with-charles" target="_blank" rel="external">这里</a></p>
+<hr>
+<p>基本上使用的地方就这些. 以后有更多的地方补上.</p>
+<p>参考: </p>
+<p><a href="https://www.wangjiawen.com/skill/shadowsocks-work-with-charles" target="_blank" rel="external">Charles和Shadowsocks共同使用</a></p>
 
       
     </div>
@@ -472,7 +469,7 @@
           
             <a href="/tags/iOS/" rel="tag"># iOS</a>
           
-            <a href="/tags/直播/" rel="tag"># 直播</a>
+            <a href="/tags/工具/" rel="tag"># 工具</a>
           
         </div>
       
@@ -485,8 +482,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/17/直播各种协议概述/" rel="next" title="直播各种协议概述">
-                <i class="fa fa-chevron-left"></i> 直播各种协议概述
+              <a href="/2017/08/22/最近两三事/" rel="next" title="最近两三事">
+                <i class="fa fa-chevron-left"></i> 最近两三事
               </a>
             
           </div>
@@ -494,10 +491,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/01/19/Runtime 部分总结 /" rel="prev" title="Runtime 部分总结">
-                Runtime 部分总结 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -692,7 +685,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-下载-ijkplayer"><span class="nav-number">1.</span> <span class="nav-text">1. 下载 ijkplayer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-编译ijkplayer"><span class="nav-number">2.</span> <span class="nav-text">2. 编译ijkplayer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-打包IJKMediaFramework-framework框架”-3-打包IJKMediaFramework-framework框架"><span class="nav-number">3.</span> <span class="nav-text">3. 打包IJKMediaFramework.framework框架”)3. 打包IJKMediaFramework.framework框架</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-按照官方demo来。"><span class="nav-number">3.1.</span> <span class="nav-text">1.按照官方demo来。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-将ijkplayer打包成framework导入工程中”-2-将ijkplayer打包成framework导入工程中"><span class="nav-number">3.2.</span> <span class="nav-text">2.将ijkplayer打包成framework导入工程中”)2.将ijkplayer打包成framework导入工程中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#终了。"><span class="nav-number">3.3.</span> <span class="nav-text">终了。</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载安装-Charles"><span class="nav-number">1.</span> <span class="nav-text">下载安装 Charles</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始使用-Charles"><span class="nav-number">2.</span> <span class="nav-text">开始使用 Charles</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#将-Charles-设置为系统代理"><span class="nav-number">2.1.</span> <span class="nav-text">将 Charles 设置为系统代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主界面"><span class="nav-number">2.2.</span> <span class="nav-text">主界面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过滤网络请求"><span class="nav-number">2.3.</span> <span class="nav-text">过滤网络请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#截取-HTTPS-协议的网站数据"><span class="nav-number">2.4.</span> <span class="nav-text">截取 HTTPS 协议的网站数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在-iPhone-上抓包"><span class="nav-number">2.5.</span> <span class="nav-text">在 iPhone 上抓包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在-iPhone-上抓取-HTTPS-协议数据包"><span class="nav-number">2.6.</span> <span class="nav-text">在 iPhone 上抓取 HTTPS 协议数据包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#手动发送新请求"><span class="nav-number">2.7.</span> <span class="nav-text">手动发送新请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">2.8.</span> <span class="nav-text">注意</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -870,9 +863,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://github.com/qin-jie/2016/11/09/iOS直播集成ijkpyer/';
-          this.page.identifier = '2016/11/09/iOS直播集成ijkpyer/';
-          this.page.title = 'iOS直播集成ijkpyer';
+          this.page.url = 'https://github.com/qin-jie/2017/08/30/抓包工具-Charles-的基本使用/';
+          this.page.identifier = '2017/08/30/抓包工具-Charles-的基本使用/';
+          this.page.title = '抓包工具 Charles 的基本使用';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://qinj.disqus.com/embed.js';
